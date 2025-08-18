@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>  
+  <MapGeneratorDef ParentName="SpaceMapGenerator">
+    <defName>BigAsteroidBasic</defName>
+    <label>big basic asteroid</label>
+    <genSteps>
+      <li>BigAsteroidBasic</li>
+      <li>AsteroidItemStash</li>
+      <li>AncientMiningCharge_Asteroid</li>
+      <li>AncientExcavator</li>
+      <li>InsectLair</li>
+      <!--<li>AncientStockpile_Gravcore</li>--> <!-- it works but is kind of lame. maybe spice up the asteroids -->
+    </genSteps>
+  </MapGeneratorDef>
+
+    <GenStepDef>
+      <defName>BigAsteroidBasic</defName>
+      <order>200</order>
+      <genStep Class="GenStep_Asteroid">
+        <numChunks>40~60</numChunks>
+        <mineableCounts>
+          <MineableGold>1000</MineableGold>
+          <MineableSilver>1000</MineableSilver>
+          <MineableSteel>2000</MineableSteel>
+          <MineableUranium>1000</MineableUranium>
+          <MineablePlasteel>1000</MineablePlasteel>
+          <MineableComponentsIndustrial>1000</MineableComponentsIndustrial>
+          <MineableJade>1000</MineableJade>
+        </mineableCounts>
+    </genStep>
+  </GenStepDef>
+
+
+</Defs>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+  
+<!--
+  <PlanetLayerSettingsDef>
+    <defName>Orbit</defName>
+    <label>Default orbit</label>
+    <settings>
+      <radius>130</radius>
+      <subdivisions>5</subdivisions>
+      <extraCameraAltitude>300</extraCameraAltitude>
+      <backgroundWorldCameraOffset>160</backgroundWorldCameraOffset>
+      <backgroundWorldCameraParallaxDistancePer100Cells>2.5</backgroundWorldCameraParallaxDistancePer100Cells>
+      <useSurfaceViewAngle>true</useSurfaceViewAngle>
+    </settings>
+  </PlanetLayerSettingsDef>-->
+
+  <PlanetLayerSettingsDef>
+    <defName>Orbit2</defName>
+    <label>Default orbit2</label>
+    <settings>
+      <radius>260</radius> <!--base is 130-->
+      <subdivisions>5</subdivisions> <!-- research-->
+      <extraCameraAltitude>500</extraCameraAltitude>
+      <backgroundWorldCameraOffset>500</backgroundWorldCameraOffset> <!-- default is 160 -->
+      <backgroundWorldCameraParallaxDistancePer100Cells>5</backgroundWorldCameraParallaxDistancePer100Cells> <!-- 2.5 is default -->
+      <useSurfaceViewAngle>true</useSurfaceViewAngle>
+    </settings>
+  </PlanetLayerSettingsDef>
+
+  
+</Defs>

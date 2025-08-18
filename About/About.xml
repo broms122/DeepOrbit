@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ModMetaData>
+	<name>Deep Orbit</name>
+	<author>Broms</author>
+	<packageId>Broms.DeepOrbit</packageId>
+	<supportedVersions>
+		<li>1.6</li>
+	</supportedVersions>
+  <modDependencies>
+    <li>
+      <packageId>Ludeon.RimWorld.Odyssey</packageId>
+      <displayName>Odyssey</displayName>
+    </li>
+  </modDependencies>
+	<description>
+	This adds a secondary deeper orbit layer with rich asteroids, filled with danger. This secondary layer is twice the height of the default Orbit layer and has roughly 8 rich asteroids filled with resources, a loot stash, and an insectoid cave. These asteroids are finite and cannot be regenerated, nor will quests appear in deep orbit.
+	</description>
+  <loadAfter>
+    <li>Ludeon.RimWorld.Odyssey</li>
+    <li>kentington.saveourship2</li>
+    <li>metalocif.skyislands</li>
+  </loadAfter>
+</ModMetaData>

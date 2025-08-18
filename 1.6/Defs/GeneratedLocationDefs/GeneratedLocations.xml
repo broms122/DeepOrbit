@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+  
+  <GeneratedLocationDef>
+    <defName>BigAsteroids</defName>
+    <worldObjectDef>BigAsteroidBasic</worldObjectDef>
+    <layerDefs>
+      <li>Orbit2</li>
+    </layerDefs>
+    <preciousResources>
+      <li>MineableGold</li>
+      <li>MineableSilver</li>
+      <li>MineableSteel</li>
+      <li>MineableUranium</li>
+      <li>MineablePlasteel</li>
+      <li>MineableComponentsIndustrial</li>
+      <li>MineableJade</li>
+    </preciousResources>
+  </GeneratedLocationDef> 
+
+<!--
+  <GeneratedLocationDef>
+    <defName>test_genloc2</defName>
+    <worldObjectDef>DestroyedSpaceSettlement</worldObjectDef>
+    <layerDefs>
+      <li>Orbit2</li>
+    </layerDefs>
+  </GeneratedLocationDef>
+  -->
+</Defs>

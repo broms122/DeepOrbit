@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+  <WorldObjectDef Abstract="True" Name="BigGeneratedAsteroid" ParentName="ClaimableSpace">
+    <worldObjectClass>DeepOrbit.BigAsteroidMapParent</worldObjectClass>
+    <label>big asteroid</label> <!-- hidden -->
+    <description>A big vacstone asteroid that was being towed into orbit around the planet as part of a mining operation long ago. Most of the valuable resources are still here, it seems that a mining operation met an early end here.\n\nThis location can be reached using transport pods, shuttles, or a gravship.</description>
+    <nameMaker>NamerWorldObject_AsteroidBasic</nameMaker>
+    <expandingIconTexture>World/WorldObjects/Expanding/AsteroidMine</expandingIconTexture>
+    <overrideMapSize>(250,1,250)</overrideMapSize>
+    <mapGenerator>BigAsteroidBasic</mapGenerator>
+  </WorldObjectDef>
+
+  <WorldObjectDef ParentName="BigGeneratedAsteroid">
+    <defName>BigAsteroidBasic</defName>
+  </WorldObjectDef>
+
+
+</Defs>

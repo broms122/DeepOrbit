@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Patch>
+
+<!-- Odyssey -->
+    <Operation Class="PatchOperationAdd">
+                <xpath>Defs/ScenarioDef[@Name="ScenarioBase"]/scenario/parts/li[@Class="ScenPart_PlanetLayer"]/connections</xpath>
+                <value>
+                    <Orbit2>
+                        <zoomMode>ZoomOut</zoomMode>
+                    </Orbit2>
+                </value>
+    </Operation>
+
+    <Operation Class="PatchOperationAdd">
+        <xpath>Defs/ScenarioDef[@Name="ScenarioBase"]/scenario/parts</xpath>
+        <value>
+            <li Class="ScenPart_PlanetLayer">
+                <def>PlanetLayer</def>
+                <tag>Orbit2</tag>
+                <layer>Orbit2</layer>
+                <settingsDef>Orbit2</settingsDef>
+                <hide>true</hide>
+                <connections>
+                    <Orbit>
+                        <zoomMode>ZoomIn</zoomMode>
+                    </Orbit>
+                </connections>
+            </li>
+        </value>
+    </Operation>
+
+    <Operation Class="PatchOperationAdd">
+                <xpath>Defs/ScenarioDef[defName="TheGravship"]/scenario/parts/li[@Class="ScenPart_PlanetLayer"]/connections</xpath>
+                <value>
+                    <Orbit2>
+                        <zoomMode>ZoomOut</zoomMode>
+                    </Orbit2>
+                </value>
+    </Operation>
+
+    <Operation Class="PatchOperationAdd">
+        <xpath>Defs/ScenarioDef[defName="TheGravship"]/scenario/parts</xpath>
+        <value>
+            <li Class="ScenPart_PlanetLayer">
+                <def>PlanetLayerFixed</def>
+                <tag>Orbit2</tag>
+                <layer>Orbit2</layer>
+                <settingsDef>Orbit2</settingsDef>
+                <hide>true</hide>
+                <connections>
+                    <Orbit>
+                        <zoomMode>ZoomIn</zoomMode>
+                    </Orbit>
+                </connections>
+            </li>
+        </value>
+    </Operation>
+<!-- Odyssey -->
+
+
+<!-- Save Our Ship Patch Below -->
+    <Operation Class="PatchOperationFindMod">
+        <mods>
+            <li>Save Our Ship 2</li>
+        </mods>
+        <match Class="PatchOperationSequence">
+            <operations>
+                <li Class="PatchOperationAdd">
+                            <xpath>Defs/ScenarioDef[
+                            @Name="SoSDerelict" or 
+                            @Name="SoSDungeon" or 
+                            @Name="SoSLoadShip" or 
+                            @Name="SoSAfterlifeVault"  
+                            ]/scenario/parts</xpath>
+                            <value>
+                                <li Class="ScenPart_PlanetLayer">
+                                    <def>PlanetLayerFixed</def>
+                                    <tag>Orbit</tag>
+                                    <layer>Orbit</layer>
+                                    <settingsDef>Orbit</settingsDef>
+                                    <hide>true</hide>
+                                    <connections>
+                                        <Surface>
+                                            <zoomMode>ZoomIn</zoomMode>
+                                        </Surface>
+                                        <Orbit2>
+                                            <zoomMode>ZoomOut</zoomMode>
+                                        </Orbit2>
+                                    </connections>
+                                </li>
+                                <li Class="ScenPart_PlanetLayer">
+                                    <def>PlanetLayer</def>
+                                    <tag>Orbit2</tag>
+                                    <layer>Orbit2</layer>
+                                    <settingsDef>Orbit2</settingsDef>
+                                    <hide>true</hide>
+                                    <connections>
+                                        <Orbit>
+                                            <zoomMode>ZoomIn</zoomMode>
+                                        </Orbit>
+                                    </connections>
+                                </li>
+                            </value>
+                </li>
+
+                <li Class="PatchOperationAdd">
+                            <xpath>Defs/ScenarioDef[
+                            @Name="SoSDerelict" or 
+                            @Name="SoSDungeon" or 
+                            @Name="SoSLoadShip" or 
+                            @Name="SoSAfterlifeVault"  
+                            ]/scenario/surfaceLayer</xpath>
+                            <value>
+                                <connections>
+                                    <Orbit MayRequire="Ludeon.RimWorld.Odyssey">
+                                        <zoomMode>ZoomOut</zoomMode>
+                                    </Orbit>
+                                </connections>
+                            </value>
+                </li>
+            </operations>
+        </match>
+    </Operation>
+    
+<!-- Save Our Ship Patch Above -->
+
+
+</Patch>
