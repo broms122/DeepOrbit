@@ -17,7 +17,10 @@
       <defName>BigAsteroidBasic</defName>
       <order>200</order>
       <genStep Class="GenStep_Asteroid">
-        <numChunks>40~60</numChunks>
+        <numChunks>40~60</numChunks> 
+        <ruinsChance>0</ruinsChance>
+        <archeanTreeChance>0</archeanTreeChance>
+        <!--<numChunks>40~60</numChunks>-->
         <mineableCounts>
           <MineableGold>1000</MineableGold>
           <MineableSilver>1000</MineableSilver>

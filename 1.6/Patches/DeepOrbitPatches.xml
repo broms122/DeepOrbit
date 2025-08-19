@@ -2,15 +2,16 @@
 <Patch>
 
 <!-- Odyssey -->
-    <Operation Class="PatchOperationAdd">
+   <!-- <Operation Class="PatchOperationAdd">
                 <xpath>Defs/ScenarioDef[@Name="ScenarioBase"]/scenario/parts/li[@Class="ScenPart_PlanetLayer"]/connections</xpath>
                 <value>
                     <Orbit2>
                         <zoomMode>ZoomOut</zoomMode>
                     </Orbit2>
                 </value>
-    </Operation>
+    </Operation>-->
 
+<!--
     <Operation Class="PatchOperationAdd">
         <xpath>Defs/ScenarioDef[@Name="ScenarioBase"]/scenario/parts</xpath>
         <value>
@@ -27,8 +28,9 @@
                 </connections>
             </li>
         </value>
-    </Operation>
+    </Operation>-->
 
+<!--
     <Operation Class="PatchOperationAdd">
                 <xpath>Defs/ScenarioDef[defName="TheGravship"]/scenario/parts/li[@Class="ScenPart_PlanetLayer"]/connections</xpath>
                 <value>
@@ -54,11 +56,11 @@
                 </connections>
             </li>
         </value>
-    </Operation>
+    </Operation>-->
 <!-- Odyssey -->
 
 
-<!-- Save Our Ship Patch Below -->
+<!-- Save Our Ship Patch Below 
     <Operation Class="PatchOperationFindMod">
         <mods>
             <li>Save Our Ship 2</li>
@@ -122,7 +124,246 @@
         </match>
     </Operation>
     
-<!-- Save Our Ship Patch Above -->
+ Save Our Ship Patch Above -->
+
+
+
+<!-- Vanilla Factions Expanded - Pirates Patch Below 
+    <Operation Class="PatchOperationFindMod">
+        <mods>
+            <li>Vanilla Factions Expanded - Pirates</li>
+        </mods>
+        <match Class="PatchOperationSequence">
+            <operations>
+                <li Class="PatchOperationAdd">
+                    <xpath>Defs/ScenarioDef[
+                    defName="VFEP_LowOrbitCrash"
+                    ]/scenario/parts</xpath>
+                    <value>
+                        <li Class="ScenPart_PlanetLayer">
+                            <def>PlanetLayerFixed</def>
+                            <tag>Orbit</tag>
+                            <layer>Orbit</layer>
+                            <settingsDef>Orbit</settingsDef>
+                            <hide>true</hide>
+                            <connections>
+                                <Surface>
+                                    <zoomMode>ZoomIn</zoomMode>
+                                </Surface>
+                                <Orbit2>
+                                    <zoomMode>ZoomOut</zoomMode>
+                                </Orbit2>
+                            </connections>
+                        </li>
+                        <li Class="ScenPart_PlanetLayer">
+                            <def>PlanetLayer</def>
+                            <tag>Orbit2</tag>
+                            <layer>Orbit2</layer>
+                            <settingsDef>Orbit2</settingsDef>
+                            <hide>true</hide>
+                            <connections>
+                                <Orbit>
+                                    <zoomMode>ZoomIn</zoomMode>
+                                </Orbit>
+                            </connections>
+                        </li>
+                    </value>
+                </li>
+            </operations>
+        </match>
+    </Operation>
+    
+ Vanilla Factions Expanded - Pirates Patch Above -->
+
+<!-- Generic Patch Below -->
+
+    <Operation Class="PatchOperationConditional"> <!-- this adds PlanetLayers if missing entirely-->
+        <xpath>Defs/ScenarioDef[scenario/parts[not(li[@Class="ScenPart_PlanetLayer"])]]</xpath>
+
+        
+        <match Class="PatchOperationAdd">
+            <xpath>Defs/ScenarioDef/scenario/parts</xpath>
+                <value>
+                    <li Class="ScenPart_PlanetLayer">
+                        <def>PlanetLayerFixed</def>
+                        <tag>Orbit</tag>
+                        <layer>Orbit</layer>
+                        <settingsDef>Orbit</settingsDef>
+                        <hide>true</hide>
+                        <connections>
+                            <Surface>
+                                <zoomMode>ZoomIn</zoomMode>
+                            </Surface>
+                            <Orbit2>
+                                <zoomMode>ZoomOut</zoomMode>
+                            </Orbit2>
+                        </connections>
+                    </li>                        
+                    <li Class="ScenPart_PlanetLayer">
+                        <def>PlanetLayer</def>
+                        <tag>Orbit2</tag>
+                        <layer>Orbit2</layer>
+                        <settingsDef>Orbit2</settingsDef>
+                        <hide>true</hide>
+                        <connections>
+                            <Orbit>
+                                <zoomMode>ZoomIn</zoomMode>
+                            </Orbit>
+                        </connections>
+                    </li>
+                </value>
+        </match>
+
+
+        <nomatch Class="PatchOperationConditional">
+            <xpath>Defs/ScenarioDef[scenario/parts/li[@Class="ScenPart_PlanetLayer"]/connections[not(Orbit2)]]</xpath>
+                <match Class="PatchOperationAdd">
+                <xpath>Defs/ScenarioDef/scenario/parts/li[@Class="ScenPart_PlanetLayer"]/connections</xpath>
+                    <value>
+                        <Orbit2>
+                            <zoomMode>ZoomOut</zoomMode>
+                        </Orbit2>
+                    </value>
+                </match>
+
+                <nomatch>
+                </nomatch>
+
+
+
+        </nomatch>
+    </Operation>
+
+    <Operation Class="PatchOperationConditional"> <!-- Orbit 2 if missing when Orbit exists-->
+        <xpath>Defs/ScenarioDef[scenario/parts/li[@Class="ScenPart_PlanetLayer"]/tag[text()="Orbit2"]]</xpath>
+
+            <nomatch Class="PatchOperationAdd">
+            <xpath>Defs/ScenarioDef/scenario/parts</xpath>
+                <value>
+                    <li Class="ScenPart_PlanetLayer">
+                        <def>PlanetLayer</def>
+                        <tag>Orbit2</tag>
+                        <layer>Orbit2</layer>
+                        <settingsDef>Orbit2</settingsDef>
+                        <hide>true</hide>
+                        <connections>
+                            <Orbit>
+                                <zoomMode>ZoomIn</zoomMode>
+                            </Orbit>
+                        </connections>
+                    </li>
+                </value>
+            </nomatch>
+    </Operation>
+
+    <Operation Class="PatchOperationConditional"> <!-- Add Orbit zoomout to PlanetLayer if it is missing, for mods that havent patched Odyssey yet -->
+        <xpath>Defs/ScenarioDef[scenario/surfaceLayer[not(connections)]]</xpath>
+
+            <match Class="PatchOperationAdd">
+            <xpath>Defs/ScenarioDef/scenario/surfaceLayer</xpath>
+                <value>
+                    <connections>
+                        <Orbit MayRequire="Ludeon.RimWorld.Odyssey">
+                            <zoomMode>ZoomOut</zoomMode>
+                        </Orbit>
+                    </connections>
+                </value>
+            </match>
+    </Operation>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!--
+        <Operation Class="PatchOperationConditional"> 
+            <xpath>Defs/ScenarioDef[scenario/parts/li[compClass="ScenPart_PlanetLayer"]/def[text()="PlanetLayerFixed"]]</xpath>
+            <match Class="PatchOperationAdd">
+                <xpath>Defs/ScenarioDef[scenario/parts[not(li[@Class="ScenPart_PlanetLayer"])]]</xpath>
+                    <value>
+                        <connections>
+                            <Orbit MayRequire="Ludeon.RimWorld.Odyssey">
+                                <zoomMode>ZoomOut</zoomMode>
+                            </Orbit>
+                        </connections>
+                    </value>
+            </match>
+        </Operation>-->
+
+    <!--
+    <PatchOperationConditional>
+        <xpath>/Defs/ScenarioDef/scenario/parts/li[compClass="ScenPart_PlanetLayer"]/tag[text()="Orbit"]</xpath>
+        <nomatch Class="PatchOperationAdd">
+            <xpath>/Defs/ScenarioDef/scenario/parts</xpath>
+            <value>
+                <li Class="ScenPart_PlanetLayer">
+                    <def>PlanetLayerFixed</def>
+                    <tag>Orbit</tag>
+                    <layer>Orbit</layer>
+                    <settingsDef>Orbit</settingsDef>
+                    <hide>true</hide>
+                    <connections>
+                        <Surface>
+                            <zoomMode>ZoomIn</zoomMode>
+                        </Surface>
+                        <Orbit2>
+                            <zoomMode>ZoomOut</zoomMode>
+                        </Orbit2>
+                    </connections>
+                </li>
+            </value>
+        </nomatch>
+    </PatchOperationConditional>
+    
+    <PatchOperationConditional>
+        <xpath>/Defs/ScenarioDef/scenario/parts/li[compClass="ScenPart_PlanetLayer"]/tag[text()="Orbit2"]</xpath>
+        <nomatch Class="PatchOperationAdd">
+            <xpath>/Defs/ScenarioDef/scenario/parts</xpath>
+            <value>
+                <li Class="ScenPart_PlanetLayer">
+                    <def>PlanetLayer</def>
+                    <tag>Orbit2</tag>
+                    <layer>Orbit2</layer>
+                    <settingsDef>Orbit2</settingsDef>
+                    <hide>true</hide>
+                    <connections>
+                        <Orbit>
+                            <zoomMode>ZoomIn</zoomMode>
+                        </Orbit>
+                    </connections>
+                </li>
+            </value>
+        </nomatch>
+    </PatchOperationConditional>
+-->
+
+<!-- Generic Patch Above -->
+
+
+<!--
+    <match Class="PatchOperationAdd">
+        <xpath>/Defs/ScenarioDef/scenario/parts</xpath>
+        <value>
+
+        </value>
+    </match>
+
+-->
 
 
 </Patch>
