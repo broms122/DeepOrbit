@@ -2,15 +2,18 @@
 <Patch>
 
 <!-- Generic Patch Below -->
-    <Operation Class="PatchOperationAdd"> <!-- adds Orbit to all Odyssey-unpatched if it wasn't patched seems to work -->
+    <Operation Class="PatchOperationConditional">
                 <xpath>Defs/ScenarioDef[scenario/surfaceLayer and not(scenario/surfaceLayer/connections)]/scenario/surfaceLayer</xpath>
-                <value>
-                    <connections>
-                        <Orbit>
-                            <zoomMode>ZoomOut</zoomMode>
-                        </Orbit>
-                    </connections>
-                </value>
+                <match Class="PatchOperationAdd"> <!-- adds Orbit to all Odyssey-unpatched if it wasn't patched seems to work -->
+                            <xpath>Defs/ScenarioDef[scenario/surfaceLayer and not(scenario/surfaceLayer/connections)]/scenario/surfaceLayer</xpath>
+                            <value>
+                                <connections>
+                                    <Orbit>
+                                        <zoomMode>ZoomOut</zoomMode>
+                                    </Orbit>
+                                </connections>
+                            </value>
+                </match>                
     </Operation>
 
     <!--
@@ -60,7 +63,7 @@
 
     
     <Operation Class="PatchOperationAdd">  <!--adds link to Orbit 2 for Orbit scenarios that have Orbit - WORKS 100%-->
-                <xpath>Defs/ScenarioDef/scenario/parts[li[@Class="ScenPart_PlanetLayer"]/tag[text()="Orbit"]]/li[@Class="ScenPart_PlanetLayer"]/connections</xpath>
+                <xpath>Defs/ScenarioDef/scenario/parts[li[@Class="ScenPart_PlanetLayer"]/tag[text()="Orbit"] and not(li[@Class="ScenPart_PlanetLayer"]/tag[text()="Orbit2"])]/li[@Class="ScenPart_PlanetLayer"]/connections</xpath>
                 <value>
                     <Orbit2>
                         <zoomMode>ZoomOut</zoomMode>
@@ -71,7 +74,7 @@
 
     
     <Operation Class="PatchOperationAdd"> <!-- adds Orbit2 to scenarios that have Orbit but not Orbit 2 - WORKS 100%-->
-                <xpath>Defs/ScenarioDef/scenario/parts[li[@Class="ScenPart_PlanetLayer"]/tag[text()="Orbit"]]</xpath>
+                <xpath>Defs/ScenarioDef[scenario/parts[li[@Class="ScenPart_PlanetLayer"]/tag[text()="Orbit"]] and not(scenario/parts[li[@Class="ScenPart_PlanetLayer"]/tag[text()="Orbit2"]])]/scenario/parts</xpath>
                 <value>
                     <li Class="ScenPart_PlanetLayer">
                         <def>PlanetLayer</def>
